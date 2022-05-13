@@ -1,0 +1,34 @@
+SYSTEM = ZEOLITE_AEI_OPT_PRO
+
+ Electronic minimisation
+   GGA    = PE          ! density functional
+   PREC   = Accurate    ! precision tag
+   EDIFF  = 1E-6        ! criterion to end SCF loop
+   ENCUT  = 400.0       ! energy cutoff
+   NELMIN = 5           ! minimum number of SCF-iterations   
+   NELM = 100           ! Number of electronic iterations
+   EDIFFG =  -0.005     ! Global break cond. for the elec. Ionic-loop
+
+
+ DOS related values
+   ISMEAR = 0           ! Gaussian smearing for big cells
+
+ Single point energy calculation
+   IBRION = 2           ! calculate frequencies
+   POTIM  = 0.015       ! step width
+   NSW    = 100           ! due to some special program gimmicks
+   ISIT   = 2
+   NFREE  = 2           ! use central diffencies
+   ISYM   = 0           ! symmetry switched off
+   LVDW   = .TRUE.
+
+ Do not write huge files - restart options
+   LCHARG = .FALSE.     ! do not write charges
+   LWAVE  = .FALSE.     ! do not write wavefunction
+   ISTART = 0           ! do not read previous SCF guess
+
+ Performance options
+   NPAR   = 1          ! adjust to number of node (same number)
+   IALGO  = 48          ! RMM-DIIS algorithm for electrons
+   LPLANE = .TRUE.      ! data distribution in real space is done plane wise
+   LREAL  = Auto        ! do projection in real or reciprocal space
